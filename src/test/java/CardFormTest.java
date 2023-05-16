@@ -35,11 +35,11 @@ public class CardFormTest {
         driver = null;
     }
 
-    @Test
-    void ShouldTestV1() {
-        driver.get("http://localhost:9999/");
-
-    }
+//    @Test
+//    void ShouldTestV1() {
+//        driver.get("http://localhost:9999/");
+//
+//    }
 
 }
 

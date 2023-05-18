@@ -1,10 +1,10 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CardFormTest {
 
@@ -35,11 +35,19 @@ public class CardFormTest {
         driver = null;
     }
 
-//    @Test
-//    void ShouldTestV1() {
-//        driver.get("http://localhost:9999/");
-//
-//    }
+    @Test
+    void ShouldBeCorrect() {
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Марина");
+        driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+79128808008");
+        driver.findElement(By.cssSelector("[data-test-id=agreement] input")).click();
+        driver.findElement(By.tagName("button")).click();
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        String actual = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
+        assertEquals (expected, actual);
+
+
+    }
 
 }
 

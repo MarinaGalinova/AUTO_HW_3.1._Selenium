@@ -40,9 +40,9 @@ public class CardFormTest {
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Марина");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+79128808008");
-        driver.findElement(By.cssSelector("[data-test-id=agreement] input")).click();
+        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.tagName("button")).click();
-        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        String expected = "  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
         String actual = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
         assertEquals (expected, actual);
 
